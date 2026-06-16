@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f7ff',
+                            100: '#ebf0ff',
+                            600: '#3b82f6',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/20">
+                    P
+                </div>
+                <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">Projects</span>
+            </div>
+            
+            <!-- Dark Mode Toggle -->
+            <button id="theme-toggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors duration-200 focus:outline-none" aria-label="Toggle Dark Mode">
+                <!-- Sun Icon -->
+                <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464a1 1 0 10-1.414 1.414l.707.707a1 1 0 001.414-1.414l-.707-.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+                </svg>
+                <!-- Moon Icon -->
+                <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-slate-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <span class="px-3 py-1 text-xs font-semibold tracking-wider text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-full uppercase">Portfolio</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold mt-3 mb-4 tracking-tight text-slate-900 dark:text-white">
+                Featured Projects
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                A showcase of strategic marketing, brand growth, content design, and operational excellence.
+            </p>
+        </div>
+
+        <!-- Toolbar: Search & Category Filter -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 bg-white dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap gap-2" id="filter-container">
+                <button data-filter="all" class="filter-btn px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 bg-blue-600 text-white shadow-md shadow-blue-500/10">
+                    All Projects
+                </button>
+                <button data-filter="Marketing" class="filter-btn px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                    Marketing & Growth
+                </button>
+                <button data-filter="Content" class="filter-btn px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                    Content & SEO
+                </button>
+                <button data-filter="Operations" class="filter-btn px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                    Operations & SOPs
+                </button>
+            </div>
+
+            <!-- Search input -->
+            <div class="relative min-w-[240px]">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </span>
+                <input type="text" id="search-input" placeholder="Search projects..." class="w-full pl-10 pr-4 py-2 text-sm rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all duration-200">
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-categories="Marketing">
+                <div class="p-6 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">Marketing</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">Polaris Academy</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            Brand Positioning
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+                            Repositioned Polaris Academy among 1,000+ rivals, driving 1,448% engagement growth in 6 months.
+                        </p>
+                    </div>
+                    <a href="https://trucnguyenportfolio.my.canva.site/projects/" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold text-white bg-slate-900 dark:bg-slate-700 hover:bg-blue-600 dark:hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-sm">
+                        View Project
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-categories="Marketing">
+                <div class="p-6 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">Marketing</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">Polaris</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            Lead Generation Campaign
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+                            Drove 300+ leads and 1M reach by designing 9 events and conversion funnels.
+                        </p>
+                    </div>
+                    <a href="https://trucnguyenportfolio.my.canva.site/projects/lead-generation-campaign" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold text-white bg-slate-900 dark:bg-slate-700 hover:bg-blue-600 dark:hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-sm">
+                        View Project
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-categories="Content">
+                <div class="p-6 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400">Content</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">Station20s</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            Content Strategy
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+                            Grew Station20s Facebook page to 8,000 followers with 10,000 organic impressions per post through strategic content planning.
+                        </p>
+                    </div>
+                    <a href="https://trucnguyenportfolio.my.canva.site/projects/content-strategy" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold text-white bg-slate-900 dark:bg-slate-700 hover:bg-blue-600 dark:hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-sm">
+                        View Project
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-categories="Marketing">
+                <div class="p-6 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">Marketing</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">Polaris</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            Activation Event
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+                            Planned and executed an activation event delivering 500K reach and 85 sign-ups at 100% satisfaction.
+                        </p>
+                    </div>
+                    <a href="https://trucnguyenportfolio.my.canva.site/projects/activation-event" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold text-white bg-slate-900 dark:bg-slate-700 hover:bg-blue-600 dark:hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-sm">
+                        View Project
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-categories="Content">
+                <div class="p-6 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400">Content</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">SEO</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            SEO Content Project
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+                            Led SEO content production of 120 articles, achieving #1 Google rankings in 6 months.
+                        </p>
+                    </div>
+                    <a href="https://trucnguyenportfolio.my.canva.site/projects/seo-content-project" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold text-white bg-slate-900 dark:bg-slate-700 hover:bg-blue-600 dark:hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-sm">
+                        View Project
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-categories="Marketing">
+                <div class="p-6 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">Marketing</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">Polaris</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            Facebook Advertising
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+                            Reduced Facebook ad cost by 77% and bot traffic by 90% through layered targeting and creative testing.
+                        </p>
+                    </div>
+                    <a href="https://trucnguyenportfolio.my.canva.site/projects/facebook-advertising" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold text-white bg-slate-900 dark:bg-slate-700 hover:bg-blue-600 dark:hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-sm">
+                        View Project
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="project-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-categories="Operations">
+                <div class="p-6 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">Operations</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">Internal</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            Marketing Recruitment Process
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+                            Standardized a full recruitment pipeline, enabling 1 staff to close 50 hires at 100% satisfaction.
+                        </p>
+                    </div>
+                    <a href="https://trucnguyenportfolio.my.canva.site/projects/marketing-recruitment-process" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold text-white bg-slate-900 dark:bg-slate-700 hover:bg-blue-600 dark:hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-sm">
+                        View Project
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-categories="Operations">
+                <div class="p-6 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">Operations</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">Training</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            Internal Onboarding & Training SOP
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+                            Designed SOPs and training roadmaps that boosted team efficiency by 50%.
+                        </p>
+                    </div>
+                    <a href="https://trucnguyenportfolio.my.canva.site/projects/internal-training--development-sop" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold text-white bg-slate-900 dark:bg-slate-700 hover:bg-blue-600 dark:hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-sm">
+                        View Project
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-16">
+            <svg class="w-16 h-16 mx-auto text-slate-300 dark:text-slate-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <p class="text-slate-500 dark:text-slate-400 text-lg">No projects match your search or filter.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 py-8 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-sm text-slate-400 dark:text-slate-500">
+                &copy; 2026 Projects. Designed with precision and clarity.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripting for Filtering, Search, and Dark Mode -->
+    <script>
+        // Dark Mode Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check theme preferences on load
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            // toggle icons
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // toggle dark mode on html
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // Filter and Search Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        const searchInput = document.getElementById('search-input');
+        const emptyState = document.getElementById('empty-state');
+        
+        let currentFilter = 'all';
+        let searchQuery = '';
+
+        function updateProjectVisibility() {
+            let visibleCount = 0;
+
+            projectCards.forEach(card => {
+                const categories = card.getAttribute('data-categories');
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                const matchesFilter = currentFilter === 'all' || categories.includes(currentFilter);
+                const matchesSearch = title.includes(searchQuery) || description.includes(searchQuery);
+
+                if (matchesFilter && matchesSearch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (visibleCount === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+            }
+        }
+
+        // Filter click handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active class
+                filterButtons.forEach(btn => {
+                    btn.className = "filter-btn px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
+                });
+                
+                button.className = "filter-btn px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 bg-blue-600 text-white shadow-md shadow-blue-500/10";
+                
+                currentFilter = button.getAttribute('data-filter');
+                updateProjectVisibility();
+            });
+        });
+
+        // Search input handler
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase().trim();
+            updateProjectVisibility();
+        });
+    </script>
+</body>
+</html>
